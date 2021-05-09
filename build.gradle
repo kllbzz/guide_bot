@@ -34,5 +34,6 @@ jar {
     manifest {
         attributes 'Main-Class': mainClassName
     }
-    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
 }
